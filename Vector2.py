@@ -39,4 +39,3 @@ class Vector2:
             temp = self.norm() * limit
             self.x = temp.x
             self.y = temp.y
-

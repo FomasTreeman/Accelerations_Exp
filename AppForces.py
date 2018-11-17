@@ -5,20 +5,16 @@ from Ball import *
 
 class Model:
     def __init__(self):
-        self.ball = Ball(500, 500)
+        self.ball = Ball(500, 100)
 
     def setup(self, window: tk.Canvas):
         self.ball.setup(window)
 
     def draw(self, window: tk.Canvas):
-        mouse = Vector2(
-                window.master.winfo_pointerx() - window.master.winfo_rootx(),
-                window.master.winfo_pointery() - window.master.winfo_rooty())
-
-        displacement = mouse - self.ball.position
-
-        self.ball.applyForce(displacement * 0.25)
+        gravity = Vector2(0, 0.5)
+        self.ball.applyForce(gravity)
         self.ball.update()
+        self.ball.edges(window)
 
         self.ball.display(window)
 

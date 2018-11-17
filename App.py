@@ -8,17 +8,18 @@ import platform
 
 
 class App(tk.Canvas):
-    def __init__(self, title: str, my_model, master=None, app_width=1000, app_height=1000):
+    def __init__(self, title: str, my_model, master=None, app_width=1000, app_height=600):
         tk.Canvas.__init__(self, master, width=app_width, height=app_height)
         self.master.title(title)
         self.model = my_model
         self.grid()
-        self.model.create(self)
+        self.model.setup(self)
         self.raise_app()
+        self.update()
         self.move()
 
     def move(self):
-        self.model.update(self)
+        self.model.draw(self)
         self.update()
         self.after(10, self.move)
 
