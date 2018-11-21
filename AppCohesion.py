@@ -1,6 +1,6 @@
 from App import *
 from tkinter import *
-from Arrow import *
+from Agent import *
 import random
 
 class Model:

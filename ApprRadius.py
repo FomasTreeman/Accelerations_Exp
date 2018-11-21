@@ -1,6 +1,6 @@
 from Vector2 import *
 from App import *
-from Arrow import *
+from Agent import *
 import random
 
 
