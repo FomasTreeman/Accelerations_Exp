@@ -7,7 +7,7 @@ class Vector2:
         self.y = y
 
     def __str__(self):
-        return str(self.x) + ',' + str(self.y)
+        return '<' + str(self.x) + ',' + str(self.y) + '>'
 
     def __add__(self, other):
         return Vector2(self.x + other.x, self.y + other.y)
@@ -16,8 +16,8 @@ class Vector2:
         return Vector2(self.x - other.x, self.y - other.y)
 
     def __mul__(self, scalar):
-        norm = self.norm()
-        return Vector2(norm.x * scalar, norm.y * scalar)
+        # norm = self.norm()
+        return Vector2(self.x * scalar, self.y * scalar)
 
     def __truediv__(self, scalar):
         norm = self.norm()
@@ -27,7 +27,11 @@ class Vector2:
         return math.sqrt((self.x * self.x) + (self.y * self.y))
 
     def norm(self):
-        return Vector2(self.x / self.mag(), self.y / self.mag())
+        mag = self.mag()
+        if mag == 0:
+            return Vector2(self.x, self.y)
+        else:
+            return Vector2(self.x / self.mag(), self.y / self.mag())
 
     def limit_old(self, limit):
         if self.mag() > limit:

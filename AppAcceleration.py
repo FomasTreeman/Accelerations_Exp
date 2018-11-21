@@ -5,7 +5,7 @@ from Ball import *
 
 class Model:
     def __init__(self):
-        self.ball = Ball(500, 500)
+        self.ball = Ball(500, 500, 2)
 
     def setup(self, window: tk.Canvas):
         self.ball.setup(window)
@@ -17,7 +17,7 @@ class Model:
 
         displacement = mouse - self.ball.position
 
-        self.ball.applyForce(displacement * 0.25)
+        self.ball.apply_force(displacement * 0.25)
         self.ball.update()
 
         self.ball.display(window)
