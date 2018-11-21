@@ -26,7 +26,8 @@ class App(tk.Canvas):
     def raise_app(self):
         self._root().attributes("-topmost", True)
         if platform.system() == 'Darwin':
-            tmpl = 'tell application "System Events" to set frontmost of every process whose unix id is {} to true'
-            script = tmpl.format(os.getpid())
-            output = subprocess.check_call(['/usr/bin/osascript', '-e', script])
+            script_text = 'tell application "System Events" to set frontmost of every process whose unix id is {} to ' \
+                          'true'
+            script = script_text.format(os.getpid())
+            subprocess.check_call(['/usr/bin/osascript', '-e', script])
         self._root().after(0, lambda: self._root().attributes("-topmost", False))

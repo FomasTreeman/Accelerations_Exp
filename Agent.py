@@ -12,7 +12,6 @@ class Agent:
     def update(self):
         self.velocity += self.acceleration
 
-        # self.velocity = self.velocity.limit_old(5)
         self.velocity.limit(5)
 
         self.position += self.velocity

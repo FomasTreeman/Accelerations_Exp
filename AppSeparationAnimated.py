@@ -1,4 +1,3 @@
-from Vector2 import *
 from App import *
 from Agent import *
 import random
@@ -12,7 +11,6 @@ class Model:
         self.away_ref = None
         self.me = Agent(200, 200)
         self.agents = [Agent(random.randint(10, 990), random.randint(10, 590)) for i in range(50)]
-        self.circle = None
         self.me.velocity = Vector2(0.1, 0)
 
     def setup(self, window: tk.Canvas):
@@ -20,7 +18,7 @@ class Model:
             x.setup(window)
 
         self.me.ref = window.create_text(self.me.position.x, self.me.position.y, text="a", anchor=tk.CENTER,
-                           fill="green")
+                                         fill="green")
 
         velocity = Vector2(0, 0)
 
@@ -33,14 +31,14 @@ class Model:
 
         sum_position = Vector2(0, 0)
         count = 0
-        for boid in self.agents:
-            distance = boid.position - self.me.position
+        for agent in self.agents:
+            distance = agent.position - self.me.position
             if distance.mag() <= 100:
-                boid.display(window, "red")
-                sum_position += boid.position
+                agent.display(window, "red")
+                sum_position += agent.position
                 count += 1
             else:
-                boid.display(window, "black")
+                agent.display(window, "black")
 
         mean_position = None
         if count == 0:
@@ -58,6 +56,7 @@ class Model:
 
         self.me.edges(window)
 
+
 model = Model()
-app = App("Seperation experiment v1", model)
+app = App("Separation experiment v1", model)
 app.mainloop()
