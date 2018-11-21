@@ -6,11 +6,6 @@ import random
 
 class Model:
     def __init__(self):
-        # self.position = Vector2(0, 0)
-        # self.velocity = Vector2(0, 0)
-        # self.acceleration = Vector2(0, 0)
-        # self.list_x = []
-        # self.c = None
         self.Agents = [Agent(random.randint(10, 990), random.randint(10, 590)) for i in range(10000)]
         self.circle = None
 
@@ -31,5 +26,5 @@ class Model:
 
 
 model = Model()
-app = App("Acceleration experiment v2", model)
+app = App("Radius experiment v1", model)
 app.mainloop()

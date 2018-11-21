@@ -16,12 +16,10 @@ class Vector2:
         return Vector2(self.x - other.x, self.y - other.y)
 
     def __mul__(self, scalar):
-        # norm = self.norm()
         return Vector2(self.x * scalar, self.y * scalar)
 
     def __truediv__(self, scalar):
-        norm = self.norm()
-        return Vector2(norm.x / scalar, norm.y / scalar)
+        return Vector2(self.x / scalar, self.y / scalar)
 
     def mag(self):
         return math.sqrt((self.x * self.x) + (self.y * self.y))

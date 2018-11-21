@@ -48,22 +48,22 @@ class Agent:
         window.coords(self.c, self.position.x, self.position.y)
         window.itemconfig(self.c, fill=fill)
 
-    # def edges(self, window: tk.Canvas):
-    #     x = self.position.x
-    #     y = self.position.y
-    #     height = window.winfo_height() - self.r
-    #     width = window.winfo_width() - self.r
-    #
-    #     if x >= width:
-    #         self.position.x = width
-    #         self.velocity.x *= -1
-    #     if x <= self.r:
-    #         self.position.x = self.r
-    #         self.velocity.x *= -1
-    #     if y >= height:
-    #         self.position.y = height
-    #         self.velocity.y *= -1
-    #     if y <= self.r:
-    #         self.position.y = self.r
-    #         self.velocity.y *= -1
-    #
+    def edges(self, window: tk.Canvas):
+        x = self.position.x
+        y = self.position.y
+        height = window.winfo_height()
+        width = window.winfo_width()
+
+        if x >= width:
+            self.position.x = width
+            self.velocity.x *= -1
+        if x <= 0:
+            self.position.x = 0
+            self.velocity.x *= -1
+        if y >= height:
+            self.position.y = height
+            self.velocity.y *= -1
+        if y <= 0:
+            self.position.y = 0
+            self.velocity.y *= -1
+
